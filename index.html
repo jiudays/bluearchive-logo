@@ -1,18 +1,17 @@
-
 <!doctype html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
-    <link rel="icon" href="https://webcnstatic.yostar.net/ba_cn_web/prod/web/favicon.png" />
+  <link rel="icon" href="https://webcnstatic.yostar.net/ba_cn_web/prod/web/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css"
-    href="./css/RS_font.css" />
-  <link rel="stylesheet" type="text/css"
-    href="./css/GS_font.css" />
+  <link rel="stylesheet" type="text/css" href="./css/RS_font.css" />
+  <link rel="stylesheet" type="text/css" href="./css/GS_font.css" />
   <title class="i18n" data-i18n="title">Blue Archive Logo Generator</title>
   <script type="module" crossorigin src="./js/bal-index.js"></script>
-  <link rel="stylesheet" href="./css/bal-index.css">
+  <link rel="stylesheet" href="./css/bal-index.css" />
+  <!-- 引入自定义CSS -->
+  <link rel="stylesheet" href="./css/custom.css" />
 </head>
 
 <body>
@@ -22,7 +21,8 @@
   <section class="canvas-wrapper flex place-content-center">
     <div class="relative my-auto">
       <canvas id="canvas" height="250" width="900"></canvas>
-      <div id='loading' class="absolute w-full h-full top-0 left-0 backdrop-blur-sm bg-slate-400/5 z-50 hidden">
+      <div id='loading'
+        class="absolute w-full h-full top-0 left-0 backdrop-blur-sm bg-slate-400/5 z-50 hidden">
         <div class="flex place-content-center h-full">
           <span class="loading loading-spinner loading-lg mx-auto"></span>
         </div>
@@ -48,16 +48,61 @@
         <input type="checkbox" />
         <div class="i18n collapse-title font-medium" data-i18n="advance">Advance settings</div>
         <div class="collapse-content">
-          <div class="i18n" data-i18n="halo-cross">Halo & Cross position</div>
-          <div class="flex justify-evenly my-4">
-            <span class="flex-1"><span class="mr-2">X</span><input type="number" placeholder="Type here" value="-15"
-                class="input input-bordered input-sm input-primary w-32 mr-2" id="graphX" /></span>
-            <span class="flex-1"><span class="mr-2">Y</span><input type="number" placeholder="Type here" value="0"
-                class="input input-bordered input-sm input-primary w-32" id="graphY" /></span>
+          <div class="i18n mb-2" data-i18n="halo-cross">Halo & Cross position</div>
+          
+          <!-- X 控制组 -->
+          <div class="control-group">
+            <!-- 主控制行：X -1 输入框 +1 -->
+            <div class="control-main">
+              <span class="axis-label">X</span>
+              <div class="join">
+                <button class="join-item btn btn-xs btn-primary btn-outline btn-step-main" type="button" id="decX1">-1</button>
+                <input type="number" placeholder="Type here" value="-15"
+                  class="join-item input input-bordered input-sm input-primary axis-input" id="graphX" />
+                <button class="join-item btn btn-xs btn-primary btn-outline btn-step-main" type="button" id="incX1">+1</button>
+              </div>
+            </div>
+            
+            <!-- 步长控制行：步长 -5 -10 +5 +10 -->
+            <div class="control-sub">
+              <span class="step-label">步长</span>
+              <div class="step-buttons">
+                <button class="btn btn-xs btn-primary btn-outline btn-step-sub" type="button" id="decX5">-5</button>
+                <button class="btn btn-xs btn-primary btn-outline btn-step-sub" type="button" id="decX10">-10</button>
+                <button class="btn btn-xs btn-primary btn-outline btn-step-sub" type="button" id="incX5">+5</button>
+                <button class="btn btn-xs btn-primary btn-outline btn-step-sub" type="button" id="incX10">+10</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Y 控制组 -->
+          <div class="control-group">
+            <!-- 主控制行：Y -1 输入框 +1 -->
+            <div class="control-main">
+              <span class="axis-label">Y</span>
+              <div class="join">
+                <button class="join-item btn btn-xs btn-primary btn-outline btn-step-main" type="button" id="decY1">-1</button>
+                <input type="number" placeholder="Type here" value="0"
+                  class="join-item input input-bordered input-sm input-primary axis-input" id="graphY" />
+                <button class="join-item btn btn-xs btn-primary btn-outline btn-step-main" type="button" id="incY1">+1</button>
+              </div>
+            </div>
+            
+            <!-- 步长控制行：步长 -5 -10 +5 +10 -->
+            <div class="control-sub">
+              <span class="step-label">步长</span>
+              <div class="step-buttons">
+                <button class="btn btn-xs btn-primary btn-outline btn-step-sub" type="button" id="decY5">-5</button>
+                <button class="btn btn-xs btn-primary btn-outline btn-step-sub" type="button" id="decY10">-10</button>
+                <button class="btn btn-xs btn-primary btn-outline btn-step-sub" type="button" id="incY5">+5</button>
+                <button class="btn btn-xs btn-primary btn-outline btn-step-sub" type="button" id="incY10">+10</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    
     <div class="flex justify-evenly my-4">
       <span><button class="i18n btn btn-primary" id="save" data-i18n="save">Save</button></span>
       <span><button class="i18n btn btn-primary" id="copy" data-i18n="copy">Copy</button></span>
@@ -92,6 +137,8 @@
     </section>
   </footer>
   
+  <!-- 引入自定义的 JavaScript 文件 -->
+  <script src="./js/custom.js"></script>
 </body>
 
 </html>
